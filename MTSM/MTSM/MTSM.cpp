@@ -12,18 +12,29 @@
 using namespace std;
 using std::cout;
 
+int initial()
+{
+	char *envAppdata = getenv("APPDATA");
+
+	std::string mcSettings = "\\Curse Client\\Minecraft.settings";
+
+	auto curseSettings = envAppdata + mcSettings;
+
+	cout << curseSettings << "\n";
+	return 0;
+}
+
+int packFind()
+{
+	return 0;
+}
+
 int main()
 {
-	DWORD bufferSize = 65535;
-	std::wstring buff;
-	buff.resize(bufferSize);
-	bufferSize = GetEnvironmentVariableW(L"appdata", &buff[0], bufferSize);
-	if (!bufferSize)
-		//error
-		buff.resize(bufferSize);
+	initial();
 
-	std::string mcSettings = "/Curse Client/Minecraft.settings";
-	auto curseSettings = to_string(bufferSize) + mcSettings;
-	cout << curseSettings;
+	packFind();
+
+	system("PAUSE");
 	return 0;
 }
